@@ -24,3 +24,21 @@ class User(db.Model):
 
     def __repr__(self):
         return f"{self.username}"
+
+
+# gracz 1
+#: karty w rece, id gracza, name,(player1, cpu)
+# sprawdzanie czy gracz ma jeszcze jakieś karty w rączce
+
+
+# obiekt gra
+# karta, id, nr
+#methody:
+# lista kart w kolejności rosnącej,
+# usuwanie ostatniej karty
+# czy sprawdzanie czy karty są jeszcze na kupce
+#
+
+# środek
+# jedna rekord, aktualna karta na środku
+# wyciąganie i podmienianie

@@ -63,24 +63,29 @@ def message(data):
 def start_gry():
 
    global gra
-   gra = ''
    gra = Game()
-   gra.start_gry()
+   gra.init_game()
+   # gra.start_gry()
    return redirect(
       url_for('gra'))
 
 @app.route("/gra", methods=['POST', "GET"])
 def gra():
+    global gra
+    print(gra)
+    print(gra.gracze)
+    karty_gracza = gra.gracze[gra.turn].karty_gracza
+    form = WybierzKarte()
+    print(form.validate_on_submit())
+    print(form.potwierdz.data,form.karta.data)
+    if form.validate_on_submit():
+       return redirect(url_for("gra"))
+    return render_template("gra.html", karty_gracza=karty_gracza, form=form)
 
-   karty_gracza = ['BA', 'ka', 'wa', 'se']
-   karty_gracza = gra.gracze[gra.turn].karty_gracza
-   form = WybierzKarte()
-   print(form.validate_on_submit())
-   if form.validate_on_submit():
-      return f"{form.karta.data}"
-   return render_template("gra.html", karty_gracza=karty_gracza, form=form)
 
-
+@app.route('/in')
+def testio():
+    return render_template("layout.html")
 
 @socketio.on('message')
 def message(data):

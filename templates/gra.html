@@ -22,6 +22,7 @@
 
 <div style="height: 200px; background: #cccccc">Liczba kart na ręce:</div>
 <form method="POST" action="">
+    {{ form.hidden_tag() }}
     <fieldset class="form-group">
         <div class="form-group">
             {{ form.karta(class="form-control form-control-lg is-invalid") }}
@@ -34,7 +35,9 @@
 </form>
 
 <div><a href="gra">DALEJ</a></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js" integrity="sha512-+l9L4lMTFNy3dEglQpprf7jQBhQsQ3/WvOnjaN/+/L4i0jOstgScV0q2TjfvRF4V+ZePMDuZYIQtg5T4MKr+MQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js"
+        integrity="sha512-+l9L4lMTFNy3dEglQpprf7jQBhQsQ3/WvOnjaN/+/L4i0jOstgScV0q2TjfvRF4V+ZePMDuZYIQtg5T4MKr+MQ=="
+        crossorigin="anonymous"></script>
 <!-- Custom SocketIO JS -->
 <script src="{{ url_for('static', filename='scripts/socketio2.js') }}"></script>
 <!--<script type="text/javascript" charset="utf-8">-->

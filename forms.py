@@ -52,5 +52,5 @@ class LoginForm(FlaskForm):
 class WybierzKarte(FlaskForm):
     """wybor karty """
 
-    karta = StringField("Karta")
-    potwierdz = SubmitField("potweirdz wybor")
+    karta = StringField("Karta", validators=[])
+    potwierdz = SubmitField("potweirdz wybor", validators=[])
