@@ -32,12 +32,29 @@ class Game:
             self.zmiana_gracza()
         return f"wygral gracz: {self.turn}"
 
-    def ruch(self):
-        if self.turn == 0:
-            # self.ruch_cpu() # losowe ruchy z tych kart co ma w rece
+    def ruch(self, type='vsPLAYER'):
+        if type == "vsCPU" and self.turn == 1:
+            self.ruch_cpu() # losowe ruchy z tych kart co ma w rece
+        else:
             self.ruch_gracza()
-        elif self.turn == 1:
-            self.ruch_gracza()
+
+    # def ruch(self, type='vsPLAYER'):
+    #     if type== "vsPLAYER":
+    #         if self.turn == 0:
+    #             # self.ruch_cpu() # losowe ruchy z tych kart co ma w rece
+    #             self.ruch_gracza()
+    #         elif self.turn == 1:
+    #             self.ruch_gracza()
+    #     if type == "vsCPU":
+    #         if self.turn == 0:
+    #             # self.ruch_cpu() # losowe ruchy z tych kart co ma w rece
+    #             self.ruch_gracza()
+    #         elif self.turn == 1:
+    #             self.ruch_cpu()
+
+
+
+
 
     def sprawdz_poprawnosc_slowa(self, wybrana_karta):
         if len(self.wartownik + wybrana_karta) == 4:

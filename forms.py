@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, SelectField
+from wtforms.validators import InputRequired, Length, ValidationError
+
 from models import *
+
 
 def invalid_credentials(form, field):
     """Username and password checker"""
@@ -38,6 +40,7 @@ class RegistrationForm(FlaskForm):
         if user_name:
             raise ValidationError("Username already exist")
 
+
 class LoginForm(FlaskForm):
     """ login Form"""
 
@@ -48,9 +51,18 @@ class LoginForm(FlaskForm):
     submit_button = SubmitField('Login')
 
 
-
 class WybierzKarte(FlaskForm):
     """wybor karty """
 
     karta = StringField("Karta", validators=[])
     potwierdz = SubmitField("potweirdz wybor", validators=[])
+
+
+class ChooseCard(FlaskForm):
+    def __init__(self, cards, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.cards.choices = [(card, card) for card in
+                        cards]
+
+    cards = SelectField('Select Card')
+    submit = SubmitField()

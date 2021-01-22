@@ -78,8 +78,10 @@ def gra():
     form = WybierzKarte()
     print(form.validate_on_submit())
     print(form.potwierdz.data,form.karta.data)
+    # choice_form = ChooseCard(gra.gracze[gra.turn].karty_gracza)
     if form.validate_on_submit():
-       return redirect(url_for("gra"))
+        gra.ruch()
+        return redirect(url_for("gra"))
     return render_template("gra.html", karty_gracza=karty_gracza, form=form)
 
 
